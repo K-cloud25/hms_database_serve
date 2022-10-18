@@ -30,15 +30,12 @@ export default function Words(props){
 
     const wordsApiCall = async() =>{
 
-        let url = String(process.env.REACT_APP_TEST_VIDEO_URL) + '/words_list'
+        let url =String(process.env.REACT_APP_FLASK_BACKEND_URL)+'/get_all_words'
 
         let response = await fetch(
             url,{
-                method : 'POST',
-                body : JSON.stringify({
-                    "AuthKey" : process.env.REACT_APP_TEST_AUTH_KEY_FLASK
-                }),
-                headers : {"Content-Type" : 'application/json'}
+                method : 'GET',
+                redirect : 'follow'
             }
         );
         let json = await response.json();
@@ -93,7 +90,7 @@ export default function Words(props){
     },[dispWords])
 
     const WordClick = (Word)=>{
-        navigate("/record",{state : { "word" : Word , "userID" : String(location.state.userID)}})
+        navigate("/record",{state : { "word" : Word , "userID" : String(location.state.userID) , "userName" : String(location.state.userName)}})
     }
 
     return(

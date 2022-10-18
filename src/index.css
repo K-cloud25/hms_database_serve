@@ -235,3 +235,23 @@ h1{
     background: #e3fcfc;
     color: #00002c;
 }
+
+
+.inputError{
+  border: solid;
+  border-color: red;
+  background-color: #7d7dffc7;
+  border-collapse: collapse;
+  border-radius: 30px;
+  padding: 5px;
+  border-width: initial;
+}
+
+.ErrorMark{
+  color: red;
+  font-size: large;
+}
+
+.ErrorDiv{
+  border-color: red;
+}
