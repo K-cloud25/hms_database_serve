@@ -8,7 +8,7 @@ function SingleItem(props){
 
     return (
         <>
-            <div className='wordItem' onClick={()=>{props.Clicked(props.Word)}}>
+            <div className='wordItem' onClick={()=>{props.Clicked(props.Word,props.uid)}}>
                 <div className='word' onMouseOver={()=>{setHover(!isHovering)}} onMouseOut={()=>{setHover(!isHovering)}} >{props.Word}</div>
                 <div className={isHovering? "videoNo Visible" : "videoNo Invisible"} >{props.videos_submitted}/20</div>
             </div>
@@ -89,8 +89,8 @@ export default function Words(props){
         assignemnet();
     },[dispWords])
 
-    const WordClick = (Word)=>{
-        navigate("/record",{state : { "word" : Word , "userID" : String(location.state.userID) , "userName" : String(location.state.userName)}})
+    const WordClick = (Word,uid)=>{
+        navigate("/record",{state : { "word" : Word, "wordUID" : uid , "userID" : String(location.state.userID) , "userName" : String(location.state.userName)}})
     }
 
     return(
@@ -110,7 +110,7 @@ export default function Words(props){
                     <div className='wordContainer'>
                         {sortedWords.map((a,index)=>{
                             return(
-                                <SingleItem key={index} Word={a.Word} videos_submitted={a.videos_uploded} Clicked={WordClick} />
+                                <SingleItem key={index} Word={a.Word} uid={a.uid} videos_submitted={a.videos_uploded} Clicked={WordClick} />
                             )
                         })}
                     </div>

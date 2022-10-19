@@ -33,7 +33,7 @@ export default function Record(){
     const postVideo = () => {
       const converter = async() =>{
         const mediaBlob = await fetch(video).then((r) => r.blob());
-        const mediaFile = new File([mediaBlob], String(location.state.userID)+'_'+String(location.state.word)+'.mp4',{type : 'video/mp4'});
+        const mediaFile = new File([mediaBlob], String(location.state.userID)+'_'+String(location.state.wordUID)+'.mp4',{type : 'video/mp4'});
 
         const url =String(process.env.REACT_APP_FLASK_BACKEND_URL)+"/video_upload"
         
